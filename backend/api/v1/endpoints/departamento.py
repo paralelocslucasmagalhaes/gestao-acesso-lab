@@ -1,16 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
-from cruds import usuario
 from sqlalchemy.orm import Session
 from typing import List
-
 from schemas.departamento import CriacaoDepartamento
 from schemas.departamento import Departamento
 from cruds import departamento as crud_departamento
-from core.database import SessionLocal, engine, get_db
+from core.database import get_db
 
-
-router = APIRouter(
-    dependencies=[Depends(get_db)],)
+router = APIRouter()
 
 @router.post("/", response_model=Departamento )
 def criar_departamento(

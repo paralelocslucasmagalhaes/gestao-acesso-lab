@@ -5,8 +5,6 @@ from ..schemas.departamento import CriacaoDepartamento
 from ..models.usuario import Usuario as UsuarioDB
 from ..models.usuario import Departamento
 
-
-
 def criar_usuario(db: Session, user: CriacaoUsuario):   
     db_user = UsuarioDB(
                         email=user.email, 

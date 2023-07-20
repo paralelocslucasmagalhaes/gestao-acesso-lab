@@ -1,9 +1,5 @@
 version: '3'
 
-# volumes:
-#   database:
-#   dbeaver:
-
 services:
   usuario-api:
     build: .
@@ -11,8 +7,8 @@ services:
       - "8080:8000"
     depends_on:
       - db-usuario
-    # volumes:
-    #   - code:${PWD}:/usr/src/app
+    volumes:
+      - .:/usr/src/app
 
   db-usuario:
     image: mysql:8.0
