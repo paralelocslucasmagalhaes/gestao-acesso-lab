@@ -1,9 +1,9 @@
 version: '3'
 
-volumes:
-  database:
-  dbeaver:
-  
+# volumes:
+#   database:
+#   dbeaver:
+
 services:
   usuario-api:
     build: .
@@ -26,7 +26,7 @@ services:
       MYSQL_USER: db_admin
       MYSQL_PASSWORD: senha_forte
     volumes:
-      - database:${PWD}/db/:/var/lib/mysql
+      - ./db:/var/lib/mysql
 
   adminer:
     image: dbeaver/cloudbeaver:23.1.2
@@ -34,6 +34,6 @@ services:
     ports:
       - 8081:8978
     volumes:
-      - dbeaver:${PWD}/dbeaver/:/opt/cloudbeaver/workspace
+      - ./dbeaver:/opt/cloudbeaver/workspace
 
 
