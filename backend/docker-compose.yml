@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  database:
+  dbeaver:
+  
+services:
+  usuario-api:
+    build: .
+    ports:
+      - "8080:8000"
+    depends_on:
+      - db-usuario
+    # volumes:
+    #   - code:${PWD}:/usr/src/app
+
+  db-usuario:
+    image: mysql:8.0
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: senha_forte
+      MYSQL_DATABASE: usuario
+      MYSQL_USER: db_admin
+      MYSQL_PASSWORD: senha_forte
+    volumes:
+      - database:${PWD}/db/:/var/lib/mysql
+
+  adminer:
+    image: dbeaver/cloudbeaver:23.1.2
+    restart: always
+    ports:
+      - 8081:8978
+    volumes:
+      - dbeaver:${PWD}/dbeaver/:/opt/cloudbeaver/workspace
+
+
