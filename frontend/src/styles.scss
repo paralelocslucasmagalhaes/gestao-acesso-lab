@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.ui {
+
+    min-height: 500px;
+    margin: auto;
+}
+
+.fill-spacer {
+    flex: 1 1 auto;
+  }
+
+  .custom-card {
+    max-width: 400px;
+  }
+
+mat-card {
+    margin: 20px;
+  }
+
+.left {
+    float: left;
+}
+
+.min-card{
+    min-width: 300px;
+}
+
+  
