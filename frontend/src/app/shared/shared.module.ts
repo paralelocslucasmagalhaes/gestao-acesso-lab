@@ -6,6 +6,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -20,7 +22,10 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatProgressBarModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   exports:[
     MatIconModule,
@@ -28,7 +33,9 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatProgressBarModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ]
 

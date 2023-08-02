@@ -21,6 +21,28 @@ mat-card {
     margin: 20px;
   }
 
+.mat-card .full-width{
+    width: 100%;
+}
+
+
+mat-card.custom-card{
+    max-width: 600px;
+    min-width: 350px;
+    overflow: auto;
+}
+
+mat-card.document-card{
+    max-width: 300px;
+    min-width: 100px;
+    overflow: auto;
+}
+
+mat-card span.title-right{
+    float: right;
+}
+
+
 .left {
     float: left;
 }

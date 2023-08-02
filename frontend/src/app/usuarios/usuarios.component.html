@@ -5,7 +5,7 @@
           <mat-card-title>{{ usuario?.nome }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>          
-          <p>Departamento: {{ usuario?.departamento }}</p>
+          <p>Departamento: {{ usuario?.id_departamento }}</p>
           <mat-divider></mat-divider>
         </mat-card-content>
         <mat-card-actions>
@@ -15,3 +15,8 @@
       </mat-card>
 
 </div>
+
+<div class="right">
+  <button mat-fab color="warn" [routerLink]="['/usuarios/new']"> <mat-icon>add</mat-icon></button>
+</div> 
+

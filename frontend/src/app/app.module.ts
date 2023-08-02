@@ -9,6 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { UsuariosService } from './services/usuarios.service';
+import { UsuarioAddComponent } from './usuario-add/usuario-add.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -16,15 +22,19 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    UsuarioAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

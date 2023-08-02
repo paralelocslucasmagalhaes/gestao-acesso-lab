@@ -2,13 +2,19 @@ version: '3'
 
 services:
   usuario-api:
-    build: .
+    build: ./backend
     ports:
       - "8080:8000"
     depends_on:
       - db-usuario
     volumes:
-      - .:/usr/src/app
+      - ./backend/:/usr/src/app
+
+  usuario-ui:
+    build: ./frontend
+    ports:
+      - "4200:80"
+      
 
   db-usuario:
     image: mysql:8.0

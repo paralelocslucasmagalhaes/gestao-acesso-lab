@@ -1,0 +1,25 @@
+<mat-card class="container-input">
+    <mat-card-title>Usuario</mat-card-title>  
+  <mat-card-content>
+      <form [formGroup]="usuarioForm" novalidate>
+        <mat-form-field class="full-width">  
+          <input matInput placeholder="Email" formControlName="email"
+             required>
+            <mat-error align="end">Erro</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nome do colaborador" formControlName="nome"
+            required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Departamento"
+            formControlName="id_departamento" required> 
+        </mat-form-field>
+        <div class="button-row">
+          <button mat-raised-button color="primary" (click)="add(usuarioForm.value)" [disabled]="!usuarioForm.valid">Save</button>
+          <button mat-stroked-button (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

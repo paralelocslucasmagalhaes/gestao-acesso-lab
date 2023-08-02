@@ -1,8 +1,7 @@
 export interface Usuario {
     id: number;
-    nome: string;
     email: string;
-    departamento: string;
-    ativo: boolean
-
+    nome: string;
+    id_departamento: string;
+    is_active: boolean
 }
