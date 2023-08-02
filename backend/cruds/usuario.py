@@ -12,6 +12,7 @@ def criar_usuario(db: Session, user: CriacaoUsuario):
     db.add(db_user)
     db.commit()  ## EFETIVAR AS TRANSACOES
     db.refresh(db_user)
+
     return db_user
 
 

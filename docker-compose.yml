@@ -9,6 +9,8 @@ services:
       - db-usuario
     volumes:
       - ./backend/:/usr/src/app
+    environment:
+      - hostdb=db_admin
 
   usuario-ui:
     build: ./frontend
