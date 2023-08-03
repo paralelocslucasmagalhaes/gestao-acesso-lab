@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gestaoacesso
+  name: ui-gestaoacesso
   labels:
-    app: api-gestaoacesso
+    app: ui-gestaoacesso
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: api-gestaoacesso
+      app: ui-gestaoacesso
   template:
     metadata:
       labels:
-        app: api-gestaoacesso
+        app: ui-gestaoacesso
     spec:
       containers:
-      - name: api-gestaoacesso
+      - name: ui-gestaoacesso
         image: lucasmagalhaes88/ui-gestao-acesso:1.0
         ports:
         - containerPort: 80

@@ -3,12 +3,17 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-HOSTDB = os.getenv("hostdb")
+HOSTDB = os.getenv("db_host")
+DB = os.getenv("database")
+USER = os.getenv("user")
+PASSWORD = os.getenv("db_password")
 
-#SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+
+
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 #SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
-SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://db_admin:senha_forte@{HOSTDB}/usuario"
+SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{USER}:{PASSWORD}@{HOSTDB}/{DB}"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL

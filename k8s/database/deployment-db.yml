@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-gestaoacesso
+  labels:
+    app: db-gestaoacesso
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-gestaoacesso
+  template:
+    metadata:
+      labels:
+        app: db-gestaoacesso
+    spec:
+      containers:
+      - name: db-gestaoacesso
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306

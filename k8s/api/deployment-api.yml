@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gestaoacesso
+  labels:
+    app: api-gestaoacesso
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: api-gestaoacesso
+  template:
+    metadata:
+      labels:
+        app: api-gestaoacesso
+    spec:
+      containers:
+      - name: api-gestaoacesso
+        image: lucasmagalhaes88/api-gestaoacesso:1.0
+        ports:
+        - containerPort: 8000
+        env:
+          - name: db_host
+            valueFrom:
+              configmapkeyref:
+                name: api-configmap
+                value: db_host
+
+          - name: database
+            valueFrom:
+              configmapkeyref:
+                name: api-configmap
+                value: database
+
+          - name: user
+            valueFrom:
+              secretKeyRef:
+                name: secret-map-api
+                value: user
+
+          - name: db_password
+            valueFrom:
+              secretKeyRef:
+                name: secret-map-api
+                value: db_password
+
+          
