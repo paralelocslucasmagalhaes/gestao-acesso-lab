@@ -24,13 +24,13 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: api-configmap
-                value: db_host
+                key: db_host
 
           - name: database
             valueFrom:
               configMapKeyRef:
                 name: api-configmap
-                value: database
+                key: database
 
           - name: user
             valueFrom:
