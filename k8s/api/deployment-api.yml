@@ -22,13 +22,13 @@ spec:
         env:
           - name: db_host
             valueFrom:
-              configmapkeyref:
+              configMapKeyRef:
                 name: api-configmap
                 value: db_host
 
           - name: database
             valueFrom:
-              configmapkeyref:
+              configMapKeyRef:
                 name: api-configmap
                 value: database
 
