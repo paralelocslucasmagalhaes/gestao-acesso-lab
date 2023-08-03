@@ -1,7 +1,7 @@
 steps:
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/api-gestao-acesso:$BUILD_ID', '-t', 'gcr.io/$PROJECT_ID/api-gestao-acesso:latest', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/api-gestao-acesso:$BUILD_ID', '-t', 'gcr.io/$PROJECT_ID/api-gestao-acesso:latest', './backend']
 
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
