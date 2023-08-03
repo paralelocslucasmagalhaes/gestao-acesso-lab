@@ -36,12 +36,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: secret-map-api
-                value: user
+                key: user
 
           - name: db_password
             valueFrom:
               secretKeyRef:
                 name: secret-map-api
-                value: db_password
+                key: db_password
 
           
