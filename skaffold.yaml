@@ -1,0 +1,24 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: gestao-acessos
+build:
+  artifacts:
+    - image: lucasmagalhaes88/api-gestaoacesso
+      context: backend
+      docker:
+        dockerfile: Dockerfile
+    - image: lucasmagalhaes88/ui-gestao-acesso
+      context: frontend
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - k8s/api/api-configmap.yaml
+    - k8s/api/deployment-api.yml
+    - k8s/api/secret-map-api.yaml
+    - k8s/api/service-api.yml
+    - k8s/database/deployment-db.yml
+    - k8s/database/service-db.yml
+    - k8s/ui/deployment-ui.yml
+    - k8s/ui/service-ui.yml

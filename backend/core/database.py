@@ -8,6 +8,10 @@ DB = os.getenv("database")
 USER = os.getenv("user")
 PASSWORD = os.getenv("db_password")
 
+print("Hostname:", HOSTDB)
+print("Password:", PASSWORD)
+
+
 # SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 #SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
