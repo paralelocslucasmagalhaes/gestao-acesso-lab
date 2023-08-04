@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    api: 'api-service-gestaoacesso.gestao-acesso.svc.cluster.local/api/v1'
+    api: 'http://api-service-gestaoacesso.gestao-acesso.svc.cluster.local/api/v1'
   };
   
