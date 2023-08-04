@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
- docker image build -t lucasmagalhaes88/ui-gestao-acesso:1.1 .
+ docker image build -t lucasmagalhaes88/ui-gestao-acesso:1.2 ./frontend
  docker image push lucasmagalhaes88/ui-gestao-acesso:1.1
 
 ## Development server
