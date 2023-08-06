@@ -22,7 +22,7 @@ spec:
     http:
       paths:
       - pathType: ImplementationSpecific
-        path: /backend
+        path: /
         backend:
           service:
             name: api-service-gestaoacesso
