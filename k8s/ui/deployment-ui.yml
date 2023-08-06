@@ -5,7 +5,7 @@ metadata:
   labels:
     app: ui-gestaoacesso
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: ui-gestaoacesso
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: ui-gestaoacesso
-        image: lucasmagalhaes88/ui-gestao-acesso:1.4
+        image: lucasmagalhaes88/ui-gestao-acesso:1.13
         ports:
         - containerPort: 80

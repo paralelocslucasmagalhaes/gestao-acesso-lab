@@ -4,5 +4,5 @@ metadata:
   name: api-configmap
 data:
   # property-like keys; each key maps to a simple value
-  db_host: db-service-gestaoacesso.gestao-acesso.svc.cluster.local
+  db_host: db-service-gestaoacesso.default.svc.cluster.local
   database: usuario
