@@ -7,15 +7,21 @@ metadata:
     networking.gke.io/managed-certificates: managed-cert
     kubernetes.io/ingress.class: "gce"
 spec:
-  defaultBackend:
-    service:
-      name: ui-service-gestaoacesso
-      port:
-        number: 8080
   rules:
-  - http:
+  - host: "gestao-acesso.gsuito.com"
+    http:
       paths:
-      - pathType: Prefix
+      - pathType: ImplementationSpecific
+        path: /
+        backend:
+          service:
+            name: ui-service-gestaoacesso
+            port:
+              number: 8080
+  - host: "api-gestao-acesso.gsuito.com"
+    http:
+      paths:
+      - pathType: ImplementationSpecific
         path: /backend
         backend:
           service:
