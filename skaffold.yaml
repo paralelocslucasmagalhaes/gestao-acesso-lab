@@ -14,10 +14,12 @@ build:
         dockerfile: Dockerfile
 manifests:
   rawYaml:
-    - k8s/api/api-configmap.yaml
     - k8s/api/deployment-api.yml
-    - k8s/api/secret-map-api.yaml
     - k8s/api/service-api.yml
+     #- k8s/config/certificate.yaml
+    - k8s/config/configmap.yaml
+      # - k8s/config/ingress.yaml
+    - k8s/config/secretmap.yaml
     - k8s/database/deployment-db.yml
     - k8s/database/service-db.yml
     - k8s/ui/deployment-ui.yml

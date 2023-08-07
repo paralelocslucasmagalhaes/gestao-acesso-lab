@@ -12,8 +12,13 @@
             required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Departamento"
-            formControlName="id_departamento" required> 
+          <mat-label>Departamento</mat-label>
+          <mat-select formControlName="id_departamento">
+              <mat-option *ngFor="let departamento of departamentos"
+              value="{{departamento.id}}" >{{departamento.nome}}</mat-option>
+          </mat-select>
+          <!-- <input matInput placeholder="Departamento"
+            formControlName="id_departamento" required>  -->
         </mat-form-field>
         <div class="button-row">
           <button mat-raised-button color="primary" (click)="add(usuarioForm.value)" [disabled]="!usuarioForm.valid">Save</button>

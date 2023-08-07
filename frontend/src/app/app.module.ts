@@ -13,7 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuariosService } from './services/usuarios.service';
 import { UsuarioAddComponent } from './usuario-add/usuario-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { APP_BASE_HREF } from '@angular/common';
+import { DepartamentosComponent } from './departamentos/departamentos.component';
+import { DepartamentoAddComponent } from './departamento-add/departamento-add.component';
+import { DepartamentoService } from './services/departamento.service';
 
 
 
@@ -24,7 +26,9 @@ import { APP_BASE_HREF } from '@angular/common';
     FooterComponent,
     HomeComponent,
     UsuariosComponent,
-    UsuarioAddComponent
+    UsuarioAddComponent,
+    DepartamentosComponent,
+    DepartamentoAddComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,7 @@ import { APP_BASE_HREF } from '@angular/common';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UsuariosService],
+  providers: [UsuariosService, DepartamentoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
 import { Usuario } from '../schema/usuario';
+import { DepartamentoService } from '../services/departamento.service';
+import { Departamento } from '../schema/departamento';
 
 
 @Component({
@@ -12,8 +14,10 @@ import { Usuario } from '../schema/usuario';
 export class UsuarioAddComponent   implements OnInit {
 
   usuarioForm: FormGroup = new FormGroup({});
+  departamentos: Departamento[] = [];
 
   constructor(private usuariosService: UsuariosService,
+              private departamentoService: DepartamentoService,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -23,6 +27,7 @@ export class UsuarioAddComponent   implements OnInit {
       id_departamento: this.formBuilder.control(''),
       ativo: true,
     });
+    this.departamentoService.departamentos().subscribe(departamentos => this.departamentos = departamentos);
   }
 
 
