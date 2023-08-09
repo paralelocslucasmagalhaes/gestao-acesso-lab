@@ -18,13 +18,3 @@ spec:
             name: ui-service-gestaoacesso
             port:
               number: 8080
-  - host: "api-gestao-acesso.gsuito.com"
-    http:
-      paths:
-      - pathType: Prefix
-        path: /(.+)
-        backend:
-          service:
-            name: api-service-gestaoacesso
-            port:
-              number: 8000
