@@ -14,14 +14,12 @@ from opentelemetry.propagators.cloud_trace_propagator import (
 )
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
-# Tracer boilerplate
-trace.set_tracer_provider(TracerProvider())
-trace.get_tracer_provider().add_span_processor(
-    BatchSpanProcessor(CloudTraceSpanExporter(project_id="treinamento-desenvolvedores"))
-)
 
-# Using the X-Cloud-Trace-Context header
 set_global_textmap(CloudTraceFormatPropagator())
+tracer_provider = TracerProvider()
+cloud_trace_exporter = CloudTraceSpanExporter(project_id="treinamento-desenvolvedores")
+tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))
+trace.set_tracer_provider(tracer_provider)
 
 
 origins = [        

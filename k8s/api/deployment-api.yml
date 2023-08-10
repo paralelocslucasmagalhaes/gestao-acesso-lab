@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api-gestaoacesso
-        image: lucasmagalhaes88/api-gestaoacesso:1.5
+        image: lucasmagalhaes88/api-gestaoacesso:1.6
         ports:
         - containerPort: 8000
         env:
