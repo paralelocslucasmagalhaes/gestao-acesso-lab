@@ -4,6 +4,26 @@ from api.v1.api_router import api_router
 from fastapi.middleware.cors import CORSMiddleware
 
 
+from opentelemetry import trace
+from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
+from opentelemetry.propagate import set_global_textmap
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.propagators.cloud_trace_propagator import (
+    CloudTraceFormatPropagator,
+)
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+
+# Tracer boilerplate
+trace.set_tracer_provider(TracerProvider())
+trace.get_tracer_provider().add_span_processor(
+    BatchSpanProcessor(CloudTraceSpanExporter())
+)
+
+# Using the X-Cloud-Trace-Context header
+set_global_textmap(CloudTraceFormatPropagator())
+
+
 origins = [        
     "http://localhost:*",
     "http://localhost:8080",
@@ -28,6 +48,8 @@ async def root():
     return {"message": "Hello World"}
 
 app.include_router(api_router, prefix="/api/v1")
+FastAPIInstrumentor.instrument_app(app)
+
 
 #### RESTFULL
 # POST   - EFETIVACAO -- INSERT

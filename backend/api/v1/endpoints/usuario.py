@@ -6,21 +6,25 @@ from schemas.usuario import CriacaoUsuario
 from schemas.usuario import Usuario
 from cruds import usuario as crud_usuario
 from core.database import get_db
+from opentelemetry import trace
 
+tracer = trace.get_tracer(__name__)
 
 router = APIRouter()
 
 @router.post("", response_model=Usuario) 
 @router.post("/", response_model=Usuario) 
-def criar_usuario(usuario: CriacaoUsuario, db: Session = Depends(get_db)):
-    response = crud_usuario.criar_usuario(db, usuario)
-    return response
+def criar_usuario(usuario: CriacaoUsuario, db: Session = Depends(get_db)):    
+    with tracer.start_as_current_span("criar_usuario"):
+        response = crud_usuario.criar_usuario(db, usuario)
+        return response
 
 @router.get("", response_model=List[Usuario])
 @router.get("/", response_model=List[Usuario])
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = crud_usuario.get_usuarios(db, skip=skip, limit=limit)
-    return users
+    with tracer.start_as_current_span("get_usuarios"):
+        users = crud_usuario.get_usuarios(db, skip=skip, limit=limit)
+        return users
 
 @router.get("/{user_id}/", response_model=Usuario)
 @router.get("/{user_id}", response_model=Usuario)
