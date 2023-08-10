@@ -17,7 +17,7 @@ from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 # Tracer boilerplate
 trace.set_tracer_provider(TracerProvider())
 trace.get_tracer_provider().add_span_processor(
-    BatchSpanProcessor(CloudTraceSpanExporter())
+    BatchSpanProcessor(CloudTraceSpanExporter(project_id="treinamento-desenvolvedores"))
 )
 
 # Using the X-Cloud-Trace-Context header
