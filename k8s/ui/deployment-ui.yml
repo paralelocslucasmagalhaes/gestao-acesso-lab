@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: ui-gestaoacesso
-        image: lucasmagalhaes88/ui-gestao-acesso:1.16
+        image: lucasmagalhaes88/ui-gestao-acesso:1.17
         ports:
         - containerPort: 80
