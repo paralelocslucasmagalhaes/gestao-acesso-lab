@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from core.database import engine, Base
+# from core.database import engine, Base
 from api.v1.api_router import api_router
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -28,7 +28,7 @@ origins = [
 ]
 
 
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 

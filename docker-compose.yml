@@ -2,42 +2,38 @@ version: '3'
 
 services:
   usuario-api:
-    build: ./backend
+    build:       
+      context: ./backend/
+      target: debug
+    command: ["sh", "-c","python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 /usr/local/bin/uvicorn main:app --host 0.0.0.0 --reload"]
     ports:
       - "8080:8000"
-    depends_on:
-      - db-usuario
+      - 5678:5678
+    # depends_on:
+    #   - db-usuario
     volumes:
       - ./backend/:/usr/src/app
     environment:
-      - hostdb=db_admin
+      # - db_host=db-usuario
+      # - database=usuario
+      # - user=db_admin
+      # - db_password=senha_forte
+      - GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/creds/key.json
+      - PROJECT_ID=treinamento-desenvolvedores
+      # - FIRESTORE_EMULATOR_HOST=firestore:8567
+  # firestore:
+  #   image: google/cloud-sdk:442.0.0-emulators
+  #   # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+  #   # (this is just an example, not intended to be a production configuration)
+  #   command: gcloud emulators firestore start --host-port=0.0.0.0:8567
+  #   ports:
+  #     - 8567:8567    
 
-  usuario-ui:
-    build: ./frontend
+  usuario-frontend:
+    build:       
+      context: ./frontend/
+      target: dev
     ports:
-      - "4200:80"
-      
-
-  db-usuario:
-    image: mysql:8.0
-    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
-    # (this is just an example, not intended to be a production configuration)
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: senha_forte
-      MYSQL_DATABASE: usuario
-      MYSQL_USER: db_admin
-      MYSQL_PASSWORD: senha_forte
+      - "4200:4200"
     volumes:
-      - ./db:/var/lib/mysql
-
-  adminer:
-    image: dbeaver/cloudbeaver:23.1.2
-    restart: always
-    ports:
-      - 8081:8978
-    volumes:
-      - ./dbeaver:/opt/cloudbeaver/workspace
-
-
+      - ./frontend/:/ui
